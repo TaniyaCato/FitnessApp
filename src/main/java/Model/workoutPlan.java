@@ -2,11 +2,9 @@ package Model;
 
 
 public class workoutPlan {
+    public static Object add;
     public String name;
     public String workout_day;
-
-
-
 
 
 
@@ -34,9 +32,9 @@ public class workoutPlan {
         this.workout_day = workout_day;
     }
 
-    public workoutPlan(String name, String work_day) {
+    public workoutPlan(String name, String workout_day) {
         this.name = name;
-        this.workout_day = work_day;
+        this.workout_day = workout_day;
 
 
     }

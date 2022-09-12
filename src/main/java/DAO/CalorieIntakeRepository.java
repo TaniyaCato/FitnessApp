@@ -8,9 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.sql.*;
-
-
 
 
 public class CalorieIntakeRepository {
@@ -31,9 +28,23 @@ public class CalorieIntakeRepository {
             e.printStackTrace();
         }
             return CalorieIntake;
-
-
-
         }
+
+    public ArrayList<CalorieIntake> checkCaloriesByFoodGenre(String genre) {
+        ArrayList<CalorieIntake> CalorieIntake = new ArrayList<>();
+        try{
+            PreparedStatement statement = conn.prepareStatement("Select * From Fit where genre = ?");
+            statement.setString(1,genre);
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                CalorieIntake loadedCalorieIntake = new CalorieIntake(rs.getString("genre"),rs.getString("food"), rs.getString("caloriesID"));
+                CalorieIntake.add(loadedCalorieIntake);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return CalorieIntake;
     }
+    }
+
 
